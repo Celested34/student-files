@@ -15,7 +15,7 @@
               .then(checkStatus)  
               .then(res => res.json())
               .then(data => {
-                 let employeeInfo = [];
+                 
                  employeeData = data.results;
                  generateEmployee(employeeData);
                  generateModal(employeeData)
