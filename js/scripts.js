@@ -73,11 +73,10 @@
  //create a variable to grab the modal element
  let modal = document.getElementById('modal');
  let body = document.querySelector('body');
- let getDiv = document.createElement('div');
  
  //add a function to generate the modal with the detailed employee info
  function generateModal(employee){
-     data.map(employee => { 
+     employee.map(employee => { 
      let modalInfo = `
      <div class="modal-container">
                  <div class="modal">
@@ -96,7 +95,7 @@
      
      `;
  
-     body.insertAdjacentHTML('beforeend', modalInfo);
+     modal.insertAdjacentHTML('beforeend', modalInfo);
         
      })
   
@@ -119,14 +118,14 @@
  
 
  // function to open the modal 
-function openModal(event){
-    for(let i=0; i<card.length; i++){
-        card[i].addEventListener('click', ()=>{
-           generateModal(employee);
-        })
-    }
+// function openModal(event){
+//     for(let i=0; i<card.length; i++){
+//         card[i].addEventListener('click', ()=>{
+//            generateModal(employee);
+//         })
+//     }
 
-    }
+//     }
 
 
 
