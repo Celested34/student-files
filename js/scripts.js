@@ -3,10 +3,6 @@
  * Template 
  */
 
-/**
- * Template 
- */
-
 
 /**
  * Fetch Function 
@@ -123,7 +119,14 @@
  
 
  // function to open the modal 
+function openModal(event){
+    for(let i=0; i<card.length; i++){
+        card[i].addEventListener('click', ()=>{
+           generateModal(employee);
+        })
+    }
 
+    }
 
 
 
