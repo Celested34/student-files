@@ -18,7 +18,8 @@
                  
                  employeeData = data.results;
                  generateEmployee(employeeData);
-                 generateModal(employeeData)
+                 openModal(employeeData)
+                
              })
               .catch(error => console.log('Error', error))
      
@@ -71,12 +72,12 @@
   */
  
  //create a variable to grab the modal element
- let modal = document.getElementById('modal');
+
  let body = document.querySelector('body');
  
  //add a function to generate the modal with the detailed employee info
  function generateModal(employee){
-     employee.map(employee => { 
+    
      let modalInfo = `
      <div class="modal-container">
                  <div class="modal">
@@ -95,39 +96,41 @@
      
      `;
  
-     modal.insertAdjacentHTML('beforeend', modalInfo);
+     body.insertAdjacentHTML('beforeend', modalInfo);
         
-     })
-  
- 
+    
+    //Add an event listener to the close button
+    let closeBtn = document.getElementById('modal-close-btn');
+    let modalContainer = document.querySelector('.modal-container')
+
+    closeBtn.addEventListener('click', () => {
+        body.removeChild(modalContainer);
+        }
+        )
+
+
  }
  
  
  /**
-  * Event Listeners 
+  * Open Modal Function 
   */
  
- //create variable for the modal container
- let modalContainer = document.querySelector('.modal-container');
- 
- //create a variable for the close button
- let closeBtn = document.querySelector('.modal-close-btn');
- 
- //variable for the card container
- let card = document.querySelectorAll('.card');
- 
-
  // function to open the modal 
-// function openModal(event){
-//     for(let i=0; i<card.length; i++){
-//         card[i].addEventListener('click', ()=>{
-//            generateModal(employee);
-//         })
-//     }
+    function openModal(employeeData){
+        //add an event listener to the gallery
+        gallery.addEventListener('click', (e) =>{
+            //create a variable to grab the card that was clicked
+            let card = e.target.parentElement;
+            //create a variable to grab the index of the card that was clicked
+            let index = Array.from(card.parentElement.children).indexOf(card);
+            let employee = employeeData[index];
+            generateModal(employee);
+            
+        })
+    }
 
-//     }
 
 
 
- //add an event listener to the close button to close the modal
  
