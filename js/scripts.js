@@ -90,7 +90,7 @@
                          <hr>
                          <p class="modal-text">${employee.cell}</p>
                          <p class="modal-text">${employee.location.street.number} ${employee.location.street.name}, ${employee.location.city}, ${employee.location.state} ${employee.location.postcode}</p>
-                         <p class="modal-text">Birthday: </p>
+                         <p class="modal-text">Birthday: ${formatDob(employee.dob.date)} </p>
                      </div>
                  </div>
      
@@ -99,18 +99,31 @@
      body.insertAdjacentHTML('beforeend', modalInfo);
         
     
-    //Add an event listener to the close button
+    //create variables to grab the modal close button
     let closeBtn = document.getElementById('modal-close-btn');
     let modalContainer = document.querySelector('.modal-container')
 
+    //Add an event listener to the close button
     closeBtn.addEventListener('click', () => {
         body.removeChild(modalContainer);
         }
         )
 
 
+//Source - Grepper - https://www.codegrepper.com/code-examples/javascript/remove+time+from+date+javascript
+ //Source - Grepper -  https://www.codegrepper.com/search.php?q=split%20date
+ //function to format DOB
+    function formatDob(dob){
+      let removeT  = dob.split('T')[0];
+      let split = removeT.split('-');
+      return split [1] + '/' + split [2] + '/' + split [0];   
+    }      
+
  }
  
+
+
+
  
  /**
   * Open Modal Function 
@@ -121,7 +134,7 @@
         //add an event listener to the gallery
         gallery.addEventListener('click', (e) =>{
             //create a variable to grab the card that was clicked
-            let card = e.target.parentElement;
+            let card = e.target.parentElement.parentElement;
             //create a variable to grab the index of the card that was clicked
             let index = Array.from(card.parentElement.children).indexOf(card);
             let employee = employeeData[index];
@@ -129,7 +142,6 @@
             
         })
     }
-
 
 
 
