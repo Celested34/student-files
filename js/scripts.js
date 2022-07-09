@@ -14,12 +14,10 @@
          fetch("https://randomuser.me/api/?results=12&inc=picture,name,email,location,city,state,postcode,cell,dob&nat=US")
               .then(checkStatus)  
               .then(res => res.json())
-              .then(data => {
-                 
+              .then(data => {  
                  employeeData = data.results;
                  generateEmployee(employeeData);
-                 openModal(employeeData)
-                
+                 openModal(employeeData) 
              })
               .catch(error => console.log('Error', error))
      
@@ -72,7 +70,6 @@
   */
  
  //create a variable to grab the modal element
-
  let body = document.querySelector('body');
  
  //add a function to generate the modal with the detailed employee info
@@ -110,7 +107,7 @@
         )
 
 
-//Source - Grepper - https://www.codegrepper.com/code-examples/javascript/remove+time+from+date+javascript
+ //Source - Grepper - https://www.codegrepper.com/code-examples/javascript/remove+time+from+date+javascript
  //Source - Grepper -  https://www.codegrepper.com/search.php?q=split%20date
  //function to format DOB
     function formatDob(dob){
